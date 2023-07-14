@@ -50,6 +50,8 @@ if __name__ == '__main__':
     parser.add_argument(
         '--env_name', type=str, default='CutRearrangeSpread', help='The environment to download',
         choices=['LiftSpread-v1', 'CutRearrange-v1', 'CutRearrangeSpread-v1', 'all'])
+
+    # Adding a different default save directory. 
     parser.add_argument('--save_dir', type=str, default='/data/tanmayshankar/Datasets/DeformableData/PASTA')
     args = parser.parse_args()
 
@@ -67,3 +69,4 @@ if __name__ == '__main__':
     elif args.command == 'pretrained':
         # download_pretrained_model(output_dir='./data/')
         download_pretrained_model(output_dir=os.path.join(args.save_dir, 'data'))
+

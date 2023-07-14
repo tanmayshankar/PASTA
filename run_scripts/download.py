@@ -50,6 +50,7 @@ if __name__ == '__main__':
     parser.add_argument(
         '--env_name', type=str, default='CutRearrangeSpread', help='The environment to download',
         choices=['LiftSpread-v1', 'CutRearrange-v1', 'CutRearrangeSpread-v1', 'all'])
+    parser.add_argument('--save_dir', type=str, default='/data/tanmayshankar/Datasets/DeformableData/PASTA')
     args = parser.parse_args()
 
     if args.env_name == 'all':
@@ -58,8 +59,11 @@ if __name__ == '__main__':
         envs = [args.env_name]
 
     if args.command == 'init_target':
-        download_init_target(args.env_name, output_dir='./datasets/')
+        # download_init_target(args.env_name, output_dir='./datasets/')
+        download_init_target(args.env_name, output_dir=os.path.join(args.save_dir,"datasets"))
     elif args.command == 'demo':
-        download_demonstration(args.env_name, output_dir='./data/released_datasets')
+        # download_demonstration(args.env_name, output_dir='./data/released_datasets')
+        download_demonstration(args.env_name, output_dir=os.path.join(args.save_dir,'data/released_datasets'))
     elif args.command == 'pretrained':
-        download_pretrained_model(output_dir='./data/')
+        # download_pretrained_model(output_dir='./data/')
+        download_pretrained_model(output_dir=os.path.join(args.save_dir, 'data'))
